@@ -1,0 +1,26 @@
+{
+  "source": "CL/tpe/seed2",
+  "val_auroc": 0.7205858153694257,
+  "config": {
+    "input_mode": "embedding",
+    "emb_dim": 51,
+    "rnn_type": "lstm",
+    "rnn_units": [
+      106,
+      106,
+      106
+    ],
+    "bidirectional": true,
+    "conv_filters": 62,
+    "kernel_size": 19,
+    "dense_units": 64,
+    "dropout": 0.16334607613246208,
+    "lr": 0.008251341115494228,
+    "weight_decay": 1e-05,
+    "batch_size": 16,
+    "max_epochs": 100,
+    "patience": 10,
+    "class_weight": true,
+    "scheme": "CL"
+  }
+}

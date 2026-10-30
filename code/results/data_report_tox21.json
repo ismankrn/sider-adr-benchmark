@@ -1,0 +1,51 @@
+{
+  "n_raw": 7831,
+  "n_valid": 7818,
+  "n_after_dedup": 7611,
+  "max_len": 332,
+  "tasks": [
+    "NR-AR",
+    "NR-AR-LBD",
+    "NR-AhR",
+    "NR-Aromatase",
+    "NR-ER",
+    "NR-ER-LBD",
+    "NR-PPAR-gamma",
+    "SR-ARE",
+    "SR-ATAD5",
+    "SR-HSE",
+    "SR-MMP",
+    "SR-p53"
+  ],
+  "positives_per_task": {
+    "NR-AR": 306,
+    "NR-AR-LBD": 236,
+    "NR-AhR": 760,
+    "NR-Aromatase": 285,
+    "NR-ER": 778,
+    "NR-ER-LBD": 343,
+    "NR-PPAR-gamma": 182,
+    "SR-ARE": 918,
+    "SR-ATAD5": 262,
+    "SR-HSE": 364,
+    "SR-MMP": 902,
+    "SR-p53": 417
+  },
+  "labelled_per_task": {
+    "NR-AR": 7051,
+    "NR-AR-LBD": 6567,
+    "NR-AhR": 6363,
+    "NR-Aromatase": 5639,
+    "NR-ER": 6030,
+    "NR-ER-LBD": 6765,
+    "NR-PPAR-gamma": 6272,
+    "SR-ARE": 5682,
+    "SR-ATAD5": 6871,
+    "SR-HSE": 6298,
+    "SR-MMP": 5656,
+    "SR-p53": 6588
+  },
+  "n_removed_too_long": 4,
+  "max_tokens": 200,
+  "n_final": 7607
+}

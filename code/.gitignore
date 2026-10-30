@@ -1,7 +1,6 @@
 .venv/
 data/raw/
-data/processed/
-results/
-figures/
+logs/
 __pycache__/
 *.pyc
+*.bak
