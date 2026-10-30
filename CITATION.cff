@@ -13,7 +13,7 @@ authors:
     given-names: Isman
     affiliation: "School of Computing, Telkom University, Bandung, Indonesia"
     email: ismankrn@telkomuniversity.ac.id
-repository-code: "https://github.com/REPLACE_OWNER/sider-adr-benchmark"
+repository-code: "https://github.com/ismankrn/sider-adr-benchmark"
 license: MIT
 keywords:
   - adverse drug reactions
