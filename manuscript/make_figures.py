@@ -5,7 +5,7 @@ import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 HERE = Path(__file__).resolve().parent; RES = HERE.parent / "code" / "results"; OUT = HERE / "figures"; OUT.mkdir(exist_ok=True)
-plt.rcParams.update({"font.family": "serif", "font.size": 8, "axes.labelsize": 8, "xtick.labelsize": 7.5, "ytick.labelsize": 7.5,
+plt.rcParams.update({"font.family": "sans-serif", "font.sans-serif": ["Helvetica", "Arial", "DejaVu Sans"], "font.size": 8, "axes.labelsize": 8, "xtick.labelsize": 7.5, "ytick.labelsize": 7.5,
                      "axes.spines.top": False, "axes.spines.right": False, "pdf.fonttype": 42})
 
 bl = pd.read_csv(RES / "baselines.csv"); bl["name"] = bl.model + "[" + bl.features.astype(str) + "]"
@@ -55,7 +55,7 @@ LEGEND = [("baseline", "Trivial baselines"), ("classical", "Classical learners")
 handles = [Patch(facecolor=COL[k], edgecolor=COL[k], alpha=.6, label=lab) for k, lab in LEGEND]
 fig.legend(handles=handles, loc="lower center", ncol=3, frameon=False, fontsize=7.5, handlelength=1.4, columnspacing=1.5, bbox_to_anchor=(0.5, 0.0))
 fig.tight_layout(w_pad=1.0, rect=(0, 0.075, 1, 1))
-fig.savefig(OUT / "box_primary.pdf"); fig.savefig(OUT / "box_primary.png", dpi=200); plt.close(fig)
+fig.savefig(OUT / "box_primary.pdf"); fig.savefig(OUT / "box_primary.png", dpi=300); plt.close(fig)
 print("wrote", OUT / "box_primary.pdf")
 
 # ------------------------------------------------------------------ optimiser benchmark: convergence + distribution of all evaluations
@@ -77,7 +77,7 @@ for patch, (_, _, col) in zip(bp["boxes"], ORDER):
 ax2.set_xticks(range(1, 6)); ax2.set_xticklabels([lab for _, lab, _ in ORDER], rotation=30, ha="right")
 ax2.set_ylabel("Validation AUROC of each evaluation"); ax2.axhline(0.5, ls="--", lw=.7, c="k"); ax2.grid(axis="y", lw=.4, alpha=.5)
 ax2.set_title("(b) All 300 evaluations", fontsize=9)
-fig.tight_layout(w_pad=1.5); fig.savefig(OUT / "hpo_benchmark.pdf"); fig.savefig(OUT / "hpo_benchmark.png", dpi=200); plt.close(fig)
+fig.tight_layout(w_pad=1.5); fig.savefig(OUT / "hpo_benchmark.pdf"); fig.savefig(OUT / "hpo_benchmark.png", dpi=300); plt.close(fig)
 print("wrote", OUT / "hpo_benchmark.pdf")
 
 # ------------------------------------------------------------------ training curves of the three encodings (CL1, fold 0, three seeds)
@@ -95,7 +95,7 @@ if tc_path.exists():
     for ax, title in zip(axes, ["(a) Training loss", "(b) Validation loss"]):
         ax.axhline(0.506, ls="--", lw=.7, c="k"); ax.set_xlabel("Epoch"); ax.set_title(title, fontsize=9); ax.grid(lw=.4, alpha=.5)
     axes[0].set_ylabel("Class-weighted binary cross-entropy"); axes[1].legend(frameon=False, fontsize=7.5)
-    fig.tight_layout(w_pad=1.2); fig.savefig(OUT / "training_curves.pdf"); fig.savefig(OUT / "training_curves.png", dpi=200); plt.close(fig)
+    fig.tight_layout(w_pad=1.2); fig.savefig(OUT / "training_curves.pdf"); fig.savefig(OUT / "training_curves.png", dpi=300); plt.close(fig)
     print("wrote", OUT / "training_curves.pdf")
 
 # ------------------------------------------------------------------ learning curves (publication style, both datasets)
@@ -116,7 +116,7 @@ for ax, ds, title in zip(axes, ["sider", "tox21"], ["(a) SIDER, Blood and lympha
     ax.minorticks_off(); ax.set_xlabel("Training molecules"); ax.set_title(title, fontsize=8.5); ax.grid(lw=.4, alpha=.5)
 axes[0].set_ylabel("Test AUROC (mean ± s.e., 15 folds)"); axes[0].set_ylim(0.54, 0.75); axes[1].set_ylim(0.68, 0.91)
 axes[1].legend(frameon=False, fontsize=6.8, loc="lower right")
-fig.tight_layout(w_pad=1.2); fig.savefig(OUT / "learning_curves.pdf"); fig.savefig(OUT / "learning_curves.png", dpi=200); plt.close(fig)
+fig.tight_layout(w_pad=1.2); fig.savefig(OUT / "learning_curves.pdf"); fig.savefig(OUT / "learning_curves.png", dpi=300); plt.close(fig)
 print("wrote", OUT / "learning_curves.pdf")
 
 
@@ -136,5 +136,5 @@ for key, lab, col, mk in TM:
 ax.set_yticks(ypos); ax.set_yticklabels([f"{(t if len(t) <= 44 else t[:41].rstrip() + chr(8230))} ({r:.2f})" for t, r in zip(order, rate.values)], fontsize=7)
 ax.axvline(0.5, ls="--", lw=.8, c="k"); ax.set_xlabel("Test AUROC (mean ± s.e., 15 folds)"); ax.grid(axis="x", lw=.4, alpha=.5)
 ax.set_xlim(0.44, 0.82); ax.legend(frameon=False, fontsize=7, loc="lower right"); ax.set_ylim(-0.7, len(order) - 0.3)
-fig.tight_layout(); fig.savefig(OUT / "all_tasks.pdf"); fig.savefig(OUT / "all_tasks.png", dpi=200); plt.close(fig)
+fig.tight_layout(); fig.savefig(OUT / "all_tasks.pdf"); fig.savefig(OUT / "all_tasks.png", dpi=300); plt.close(fig)
 print("wrote", OUT / "all_tasks.pdf")
