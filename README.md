@@ -86,6 +86,6 @@ SIDER 4.1 (27 system organ classes) and Tox21 are downloaded by script 01 from t
 
 Code is released under the MIT licence. Please cite the article (reference to be added on publication) and the archived repository.
 
-> Kurniawan, I., Afinda, A. M., Azis, A. M. H. (2026). sider-adr-benchmark: A controlled benchmark of SMILES-based recurrent networks, molecular fingerprints and pretrained chemical language models for adverse drug reaction prediction on SIDER (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.23797951
+> Kurniawan, I., Afinda, A. M., Azis, A. M. H. (2026). sider-adr-benchmark: A controlled benchmark of SMILES-based recurrent networks, molecular fingerprints and pretrained chemical language models for adverse drug reaction prediction on SIDER (v1.0.1). Zenodo. https://doi.org/10.5281/zenodo.23798100
 
 The concept DOI 10.5281/zenodo.23797950 always resolves to the latest archived version. Machine-readable metadata is in `CITATION.cff`.
