@@ -15,6 +15,15 @@ authors:
     email: ismankrn@telkomuniversity.ac.id
 repository-code: "https://github.com/ismankrn/sider-adr-benchmark"
 license: MIT
+doi: 10.5281/zenodo.23797950
+version: v1.0.0
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23797950
+    description: "Concept DOI (all versions)"
+  - type: doi
+    value: 10.5281/zenodo.23797951
+    description: "Version DOI (v1.0.0)"
 keywords:
   - adverse drug reactions
   - SIDER

@@ -1,5 +1,7 @@
 # SIDER ADR benchmark
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23797950.svg)](https://doi.org/10.5281/zenodo.23797950)
+
 Code, per-fold results and figure/table generators for the study
 
 > **A controlled benchmark of SMILES-based recurrent networks, molecular fingerprints and pretrained chemical language models for adverse drug reaction prediction on SIDER**
@@ -82,4 +84,8 @@ SIDER 4.1 (27 system organ classes) and Tox21 are downloaded by script 01 from t
 
 ## Licence and citation
 
-Code is released under the MIT licence. Please cite the article (reference to be added on publication) and this repository (see `CITATION.cff`).
+Code is released under the MIT licence. Please cite the article (reference to be added on publication) and the archived repository.
+
+> Karimah, A. F., Afinda, A. M., Kurniawan, I. (2026). sider-adr-benchmark: A controlled benchmark of SMILES-based recurrent networks, molecular fingerprints and pretrained chemical language models for adverse drug reaction prediction on SIDER (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.23797951
+
+The concept DOI 10.5281/zenodo.23797950 always resolves to the latest archived version. Machine-readable metadata is in `CITATION.cff`.
