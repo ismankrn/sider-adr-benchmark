@@ -255,17 +255,16 @@ for split_name, D_ in [("Stratified", S), ("Scaffold", C)]:
     for label, a, b in tests:
         res.append((split_name, label, paired_test(D_, "name", a, b)))
 padj = holm([t["wilcoxon_p"] for _, _, t in res])
-rows = [r"\begin{tabular}{llccccc}", r"\toprule", r"Split & Comparison (A vs.\ B) & AUROC A & AUROC B & $\Delta$ & Wilcoxon $p$ / Holm $p$ & Cohen's $d$ \\", r"\midrule"]
+rows = [r"\begin{tabular}{lccccc}", r"\toprule", r"Comparison (A vs.\ B) & AUROC A & AUROC B & $\Delta$ & Wilcoxon $p$ / Holm $p$ & Cohen's $d$ \\", r"\midrule"]
 prev = None
 for (sp, label, t), pa in zip(res, padj):
     if sp != prev:
         if prev: rows.append(r"\midrule")
-        rows.append(r"\multicolumn{7}{l}{\emph{%s split, deep models versus the classical reference}} \\" % sp); prev = sp
+        rows.append(r"\multicolumn{6}{l}{\emph{%s split, deep models versus the classical reference}} \\" % sp); prev = sp
     if label.startswith("MoLFormer"):
-        rows.append(r"\multicolumn{7}{l}{\emph{%s split, within deep models}} \\" % sp)
-    rows.append(f" & {label} & {t['mean_a']:.3f} & {t['mean_b']:.3f} & {t['diff']:+.3f} & {fmtp(t['wilcoxon_p'])} / {fmtp(pa)} & {t['cohen_d']:.2f} \\\\")
+        rows.append(r"\multicolumn{6}{l}{\emph{%s split, within deep models}} \\" % sp)
+    rows.append(f"{label} & {t['mean_a']:.3f} & {t['mean_b']:.3f} & {t['diff']:+.3f} & {fmtp(t['wilcoxon_p'])} / {fmtp(pa)} & {t['cohen_d']:.2f} \\\\")
 rows += [r"\bottomrule", r"\end{tabular}"]
-rows = [r.replace(r"Split & Comparison (A vs.\ B)", r" & Comparison (A vs.\ B)") for r in rows]
 write("tab_stats.tex", "\n".join(rows))
 
 # ------------------------------------------------------------------ Table: threshold 0.5 vs validation-tuned threshold (primary task, stratified)

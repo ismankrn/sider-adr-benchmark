@@ -1,23 +1,23 @@
-\begin{tabular}{llccccc}
+\begin{tabular}{lccccc}
 \toprule
- & Comparison (A vs.\ B) & AUROC A & AUROC B & $\Delta$ & Wilcoxon $p$ / Holm $p$ & Cohen's $d$ \\
+Comparison (A vs.\ B) & AUROC A & AUROC B & $\Delta$ & Wilcoxon $p$ / Holm $p$ & Cohen's $d$ \\
 \midrule
-\multicolumn{7}{l}{\emph{Stratified split, deep models versus the classical reference}} \\
- & XGBoost-ECFP4 vs.\ best default recurrent (CL1 one-hot) & 0.728 & 0.661 & +0.067 & $<$0.001 / $<$0.001 & 2.32 \\
- & XGBoost-ECFP4 vs.\ best tuned recurrent (PSO) & 0.728 & 0.674 & +0.054 & $<$0.001 / $<$0.001 & 2.53 \\
- & XGBoost-ECFP4 vs.\ MoLFormer-XL & 0.728 & 0.693 & +0.034 & $<$0.001 / 0.002 & 1.35 \\
- & XGBoost-ECFP4 vs.\ ChemBERTa-2 & 0.728 & 0.683 & +0.045 & $<$0.001 / $<$0.001 & 1.67 \\
- & XGBoost-ECFP4 vs.\ Chemprop & 0.728 & 0.671 & +0.057 & $<$0.001 / $<$0.001 & 1.52 \\
-\multicolumn{7}{l}{\emph{Stratified split, within deep models}} \\
- & MoLFormer-XL vs.\ best tuned recurrent (PSO) & 0.693 & 0.674 & +0.019 & 0.003 / 0.010 & 0.99 \\
+\multicolumn{6}{l}{\emph{Stratified split, deep models versus the classical reference}} \\
+XGBoost-ECFP4 vs.\ best default recurrent (CL1 one-hot) & 0.728 & 0.661 & +0.067 & $<$0.001 / $<$0.001 & 2.32 \\
+XGBoost-ECFP4 vs.\ best tuned recurrent (PSO) & 0.728 & 0.674 & +0.054 & $<$0.001 / $<$0.001 & 2.53 \\
+XGBoost-ECFP4 vs.\ MoLFormer-XL & 0.728 & 0.693 & +0.034 & $<$0.001 / 0.002 & 1.35 \\
+XGBoost-ECFP4 vs.\ ChemBERTa-2 & 0.728 & 0.683 & +0.045 & $<$0.001 / $<$0.001 & 1.67 \\
+XGBoost-ECFP4 vs.\ Chemprop & 0.728 & 0.671 & +0.057 & $<$0.001 / $<$0.001 & 1.52 \\
+\multicolumn{6}{l}{\emph{Stratified split, within deep models}} \\
+MoLFormer-XL vs.\ best tuned recurrent (PSO) & 0.693 & 0.674 & +0.019 & 0.003 / 0.010 & 0.99 \\
 \midrule
-\multicolumn{7}{l}{\emph{Scaffold split, deep models versus the classical reference}} \\
- & XGBoost-ECFP4 vs.\ best default recurrent (CL1 one-hot) & 0.697 & 0.644 & +0.053 & $<$0.001 / $<$0.001 & 2.13 \\
- & XGBoost-ECFP4 vs.\ best tuned recurrent (PSO) & 0.697 & 0.648 & +0.049 & $<$0.001 / 0.003 & 1.27 \\
- & XGBoost-ECFP4 vs.\ MoLFormer-XL & 0.697 & 0.681 & +0.016 & 0.041 / 0.041 & 0.58 \\
- & XGBoost-ECFP4 vs.\ ChemBERTa-2 & 0.697 & 0.670 & +0.027 & 0.010 / 0.021 & 0.83 \\
- & XGBoost-ECFP4 vs.\ Chemprop & 0.697 & 0.658 & +0.039 & 0.001 / 0.006 & 0.86 \\
-\multicolumn{7}{l}{\emph{Scaffold split, within deep models}} \\
- & MoLFormer-XL vs.\ best tuned recurrent (PSO) & 0.681 & 0.648 & +0.033 & 0.003 / 0.010 & 0.94 \\
+\multicolumn{6}{l}{\emph{Scaffold split, deep models versus the classical reference}} \\
+XGBoost-ECFP4 vs.\ best default recurrent (CL1 one-hot) & 0.697 & 0.644 & +0.053 & $<$0.001 / $<$0.001 & 2.13 \\
+XGBoost-ECFP4 vs.\ best tuned recurrent (PSO) & 0.697 & 0.648 & +0.049 & $<$0.001 / 0.003 & 1.27 \\
+XGBoost-ECFP4 vs.\ MoLFormer-XL & 0.697 & 0.681 & +0.016 & 0.041 / 0.041 & 0.58 \\
+XGBoost-ECFP4 vs.\ ChemBERTa-2 & 0.697 & 0.670 & +0.027 & 0.010 / 0.021 & 0.83 \\
+XGBoost-ECFP4 vs.\ Chemprop & 0.697 & 0.658 & +0.039 & 0.001 / 0.006 & 0.86 \\
+\multicolumn{6}{l}{\emph{Scaffold split, within deep models}} \\
+MoLFormer-XL vs.\ best tuned recurrent (PSO) & 0.681 & 0.648 & +0.033 & 0.003 / 0.010 & 0.94 \\
 \bottomrule
 \end{tabular}
