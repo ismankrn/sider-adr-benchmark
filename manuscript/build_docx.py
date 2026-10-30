@@ -213,5 +213,7 @@ for t in d.tables:
     for c in rows[-1].cells: set_border(c, "bottom", 8)
 for p in d.paragraphs:
     if p.style.name == "Table Caption": p.paragraph_format.keep_with_next = True
+from ooxml_order import fix_document
+print('schema-ordered elements:', fix_document(d))
 d.save(HERE / "build/manuscript_MolInf.docx")
 print(f"wrote build/manuscript_MolInf.docx with {tn} tables and {fn} figures numbered")

@@ -3,7 +3,8 @@ Molecular Informatics Full Paper template (template/2022_full_paper.docx).
 
 Run build_docx.py first.  Output: build/manuscript_MolInf_template.docx
 """
-import copy, io, pathlib, re, sys
+import copy, io, os, pathlib, re, sys
+SKIP = set(os.environ.get("MOLINF_SKIP", "").split(","))
 import docx
 from docx.shared import Pt, Cm, Emu
 from docx.oxml import OxmlElement
@@ -314,8 +315,9 @@ for kind, els in blocks:
         tbl = els[-1]; ncol, mins = table_min_width(tbl)
         full = sum(mins) > COL_W or ncol > 5
         switch(full)
-        set_table_width(tbl, TEXT_W if full else COL_W)
-        style_table(tbl, 7 if (full and ncol >= 10) else 7.5)
+        if "tables" not in SKIP:
+            set_table_width(tbl, TEXT_W if full else COL_W)
+            style_table(tbl, 7 if (full and ncol >= 10) else 7.5)
     elif kind == "figure":
         switch(True)
         for el in els: copy_images(el); set_image_width(el, TEXT_W)
@@ -323,7 +325,7 @@ for kind, els in blocks:
         switch(False)
     for el in els:
         new = copy.deepcopy(el) if el.getparent() is not None else el
-        if new.tag == qn("w:p") and new.find(".//{http://schemas.openxmlformats.org/officeDocument/2006/math}oMathPara") is not None and eq_index < len(EQ_IMAGES):
+        if "eq" not in SKIP and new.tag == qn("w:p") and new.find(".//{http://schemas.openxmlformats.org/officeDocument/2006/math}oMathPara") is not None and eq_index < len(EQ_IMAGES):
             tb.insert(tb.index(insert_before), equation_paragraph(TEXT_W if in_full else COL_W)); continue
         if new.tag == qn("w:p"):
             sid = pstyle(new)
@@ -365,10 +367,21 @@ for el in tb.iterchildren():
 
 # address frame goes into the first heading ("1 Introduction"), as in the template
 first_h1 = next(el for el in tb.iterchildren() if el.tag == qn("w:p") and pstyle(el) == "H1")
-first_h1.append(frame_copy)
+if "frame" not in SKIP: first_h1.append(frame_copy)
 for t in tb.iter(qn("w:t")):
     if t.text and "underhttps://" in t.text: t.text = t.text.replace("underhttps://", "under https://")
-assert eq_index == len(EQ_IMAGES), (eq_index, len(EQ_IMAGES))
-out = HERE / "build/manuscript_MolInf_template.docx"
+assert "eq" in SKIP or eq_index == len(EQ_IMAGES), (eq_index, len(EQ_IMAGES))
+out = pathlib.Path(os.environ.get("MOLINF_OUT", HERE / "build/manuscript_MolInf_template.docx"))
+from ooxml_order import fix_document
+print('schema-ordered elements:', fix_document(T))
 T.save(out)
+# Re-export through LibreOffice's Word writer: Microsoft Word rejects some structures that
+# python-docx editing can leave behind, while LibreOffice reads them and writes clean OOXML.
+import shutil, tempfile
+SOFFICE = "/Applications/LibreOffice.app/Contents/MacOS/soffice"
+if os.environ.get("MOLINF_NO_SANITISE") != "1" and pathlib.Path(SOFFICE).exists():
+    with tempfile.TemporaryDirectory() as td:
+        subprocess.run([SOFFICE, "--headless", "--convert-to", "docx:MS Word 2007 XML", "--outdir", td, str(out)],
+                       capture_output=True, check=True)
+        shutil.move(str(pathlib.Path(td) / out.name), str(out))
 print("wrote", out)
