@@ -3,16 +3,18 @@ message: "If you use this code or these results, please cite the article below (
 title: "A controlled benchmark of SMILES-based recurrent networks, molecular fingerprints and pretrained chemical language models for adverse drug reaction prediction on SIDER"
 type: software
 authors:
-  - family-names: Karimah
-    given-names: Ananda Fitri
-    affiliation: "School of Computing, Telkom University, Bandung, Indonesia"
-  - family-names: Afinda
-    given-names: Angel Metanosa
-    affiliation: "School of Computing, Telkom University, Bandung, Indonesia"
   - family-names: Kurniawan
     given-names: Isman
     affiliation: "School of Computing, Telkom University, Bandung, Indonesia"
     email: ismankrn@telkomuniversity.ac.id
+  - family-names: Afinda
+    given-names: Angel Metanosa
+    affiliation: "School of Electrical Engineering, Telkom University, Bandung, Indonesia"
+    email: angelmetanosa@telkomuniversity.ac.id
+  - family-names: Azis
+    given-names: Aaz Muhammad Hafidz
+    affiliation: "School of Computing, Telkom University, Bandung, Indonesia"
+    email: aazmuhammad@telkomuniversity.ac.id
 repository-code: "https://github.com/ismankrn/sider-adr-benchmark"
 license: MIT
 doi: 10.5281/zenodo.23797950

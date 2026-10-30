@@ -5,7 +5,7 @@
 Code, per-fold results and figure/table generators for the study
 
 > **A controlled benchmark of SMILES-based recurrent networks, molecular fingerprints and pretrained chemical language models for adverse drug reaction prediction on SIDER**
-> Ananda Fitri Karimah, Angel Metanosa Afinda, Isman Kurniawan (School of Computing, Telkom University). Manuscript in preparation.
+> Isman Kurniawan (School of Computing), Angel Metanosa Afinda (School of Electrical Engineering), Aaz Muhammad Hafidz Azis (School of Computing), Telkom University. Manuscript in preparation.
 
 The study compares, under one evaluation protocol (stratified and Bemis–Murcko scaffold 5-fold cross-validation repeated over three seeds, paired Wilcoxon tests with Holm correction):
 
@@ -86,6 +86,6 @@ SIDER 4.1 (27 system organ classes) and Tox21 are downloaded by script 01 from t
 
 Code is released under the MIT licence. Please cite the article (reference to be added on publication) and the archived repository.
 
-> Karimah, A. F., Afinda, A. M., Kurniawan, I. (2026). sider-adr-benchmark: A controlled benchmark of SMILES-based recurrent networks, molecular fingerprints and pretrained chemical language models for adverse drug reaction prediction on SIDER (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.23797951
+> Kurniawan, I., Afinda, A. M., Azis, A. M. H. (2026). sider-adr-benchmark: A controlled benchmark of SMILES-based recurrent networks, molecular fingerprints and pretrained chemical language models for adverse drug reaction prediction on SIDER (v1.0.0). Zenodo. https://doi.org/10.5281/zenodo.23797951
 
 The concept DOI 10.5281/zenodo.23797950 always resolves to the latest archived version. Machine-readable metadata is in `CITATION.cff`.
