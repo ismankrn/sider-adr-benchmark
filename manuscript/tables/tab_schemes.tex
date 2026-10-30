@@ -1,0 +1,22 @@
+\begin{tabular}{llcccccr}
+\toprule
+Name & Scheme & Conv.\ filters & Cell & Layers $\times$ units & Bidir. & Dense units & Parameters \\
+\midrule
+L1 & L & -- & LSTM & 1 $\times$ 64 & no & -- & 38,273 \\
+L2 & L & -- & LSTM & 2 $\times$ 64 & no & -- & 71,553 \\
+L3 & L & -- & LSTM & 3 $\times$ 64 & no & -- & 104,833 \\
+CL1 & CL & 64 (width 5) & LSTM & 1 $\times$ 64 & no & -- & 58,817 \\
+CL2 & CL & 64 (width 5) & LSTM & 2 $\times$ 64 & no & -- & 92,097 \\
+CL3 & CL & 64 (width 5) & LSTM & 3 $\times$ 64 & no & -- & 125,377 \\
+L1D & LD & -- & LSTM & 1 $\times$ 64 & no & 64 & 42,433 \\
+L2D & LD & -- & LSTM & 2 $\times$ 64 & no & 64 & 75,713 \\
+L3D & LD & -- & LSTM & 3 $\times$ 64 & no & 64 & 108,993 \\
+CL1D & CLD & 64 (width 5) & LSTM & 1 $\times$ 64 & no & 64 & 62,977 \\
+CL2D & CLD & 64 (width 5) & LSTM & 2 $\times$ 64 & no & 64 & 96,257 \\
+CL3D & CLD & 64 (width 5) & LSTM & 3 $\times$ 64 & no & 64 & 129,537 \\
+\midrule
+BiLSTM & L & -- & LSTM & 1 $\times$ 64 & yes & -- & 71,617 \\
+GRU & L & -- & GRU & 1 $\times$ 64 & no & -- & 29,953 \\
+CNN-GRU & CL & 64 (width 5) & GRU & 1 $\times$ 64 & no & -- & 50,497 \\
+\bottomrule
+\end{tabular}

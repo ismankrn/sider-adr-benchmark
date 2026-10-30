@@ -1,0 +1,13 @@
+\begin{tabular}{lcccccc}
+\toprule
+Comparison (A vs.\ B) & AUROC A & AUROC B & $\Delta$ & Wilcoxon $p$ / Holm $p$ & Cohen's $d$ & Pairs \\
+\midrule
+RF-ECFP4 vs.\ LSTM single-task & 0.682 & 0.563 & +0.119 & $<$0.001 / $<$0.001 & 1.59 & 404 \\
+RF-ECFP4 vs.\ LSTM multi-label & 0.682 & 0.566 & +0.116 & $<$0.001 / $<$0.001 & 1.66 & 404 \\
+RF-ECFP4 vs.\ ChemBERTa-2 multi-task & 0.682 & 0.603 & +0.079 & $<$0.001 / $<$0.001 & 1.29 & 404 \\
+RF-ECFP4 vs.\ MoLFormer-XL multi-task & 0.682 & 0.615 & +0.067 & $<$0.001 / $<$0.001 & 1.15 & 404 \\
+RF-ECFP4 vs.\ Chemprop multi-task & 0.682 & 0.615 & +0.067 & $<$0.001 / $<$0.001 & 1.05 & 404 \\
+MoLFormer-XL vs.\ Chemprop (multi-task) & 0.615 & 0.615 & +0.000 & 0.570 / 0.843 & 0.00 & 404 \\
+LSTM multi-label vs.\ LSTM single-task & 0.566 & 0.563 & +0.003 & 0.421 / 0.843 & 0.04 & 404 \\
+\bottomrule
+\end{tabular}

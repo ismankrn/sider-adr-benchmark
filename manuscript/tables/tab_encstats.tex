@@ -1,0 +1,13 @@
+\begin{tabular}{llccccc}
+\toprule
+Split & Comparison (A vs.\ B) & AUROC A & AUROC B & $\Delta$ & Wilcoxon $p$ / Holm $p$ & Cohen's $d$ \\
+\midrule
+Stratified & Learned embedding vs.\ integer index & 0.635 & 0.546 & +0.089 & $<$0.001 / $<$0.001 & 1.86 \\
+ & One-hot vs.\ integer index & 0.661 & 0.546 & +0.115 & $<$0.001 / $<$0.001 & 2.53 \\
+ & One-hot vs.\ learned embedding & 0.661 & 0.635 & +0.026 & $<$0.001 / $<$0.001 & 1.32 \\
+\midrule
+Scaffold & Learned embedding vs.\ integer index & 0.635 & 0.533 & +0.102 & $<$0.001 / $<$0.001 & 1.70 \\
+ & One-hot vs.\ integer index & 0.644 & 0.533 & +0.111 & $<$0.001 / $<$0.001 & 1.98 \\
+ & One-hot vs.\ learned embedding & 0.644 & 0.635 & +0.010 & 0.121 / 0.121 & 0.42 \\
+\bottomrule
+\end{tabular}

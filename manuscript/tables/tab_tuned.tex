@@ -1,0 +1,17 @@
+\begin{tabular}{lccccccccccc}
+\toprule
+Model & \multicolumn{3}{c}{At threshold 0.5} & \multicolumn{2}{c}{MCC} & \multicolumn{2}{c}{Balanced acc.} & \multicolumn{2}{c}{F1} & \multicolumn{2}{c}{Threshold} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}\cmidrule(lr){9-10}\cmidrule(lr){11-12}
+ & Precision & Recall & Specificity & 0.5 & tuned & 0.5 & tuned & 0.5 & tuned & mean & s.d. \\
+\midrule
+Majority class & 0.635 & 1.000 & 0.000 & 0.000 & -- & 0.500 & -- & 0.777 & -- & -- & -- \\
+XGBoost, ECFP4 & 0.755 & 0.704 & 0.600 & \textbf{0.299} & 0.294 & \textbf{0.652} & 0.641 & 0.728 & \textbf{0.736} & 0.46 & 0.13 \\
+Random forest, ECFP4 & 0.739 & 0.762 & 0.531 & 0.297 & \textbf{0.312} & 0.647 & \textbf{0.659} & 0.750 & 0.715 & 0.55 & 0.04 \\
+One-hot & 0.741 & 0.604 & 0.633 & 0.231 & 0.207 & 0.619 & 0.605 & 0.663 & 0.650 & 0.51 & 0.08 \\
+Learned embedding & 0.723 & 0.584 & 0.598 & 0.178 & 0.165 & 0.591 & 0.578 & 0.640 & 0.644 & 0.48 & 0.11 \\
+CL tuned, PSO & 0.737 & 0.660 & 0.588 & 0.243 & 0.230 & 0.624 & 0.615 & 0.694 & 0.648 & 0.54 & 0.10 \\
+MoLFormer-XL, fine-tuned & \textbf{0.767} & 0.655 & \textbf{0.646} & 0.293 & 0.249 & 0.650 & 0.618 & 0.703 & 0.710 & 0.42 & 0.13 \\
+ChemBERTa-2 (77M-MLM), fine-tuned & 0.743 & 0.666 & 0.598 & 0.258 & 0.245 & 0.632 & 0.620 & 0.702 & 0.694 & 0.48 & 0.12 \\
+Chemprop D-MPNN & 0.685 & \textbf{0.845} & 0.321 & 0.196 & 0.232 & 0.583 & 0.616 & \textbf{0.755} & 0.654 & 0.63 & 0.08 \\
+\bottomrule
+\end{tabular}

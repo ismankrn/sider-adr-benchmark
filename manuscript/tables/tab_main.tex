@@ -1,0 +1,28 @@
+\begin{tabular}{lcccccc}
+\toprule
+Model & AUROC (strat.) & AUROC (scaffold) & AUPRC & MCC & Bal.\ acc. & F1 \\
+\midrule
+\multicolumn{7}{l}{\emph{Trivial baselines}} \\
+\quad Majority class & 0.500 $\pm$ 0.000 & 0.500 $\pm$ 0.000 & 0.635 $\pm$ 0.001 & 0.000 $\pm$ 0.000 & 0.500 $\pm$ 0.000 & \textbf{0.777 $\pm$ 0.001} \\
+\quad Random scores & 0.499 $\pm$ 0.038 & 0.505 $\pm$ 0.025 & 0.646 $\pm$ 0.028 & -0.012 $\pm$ 0.058 & 0.494 $\pm$ 0.030 & 0.561 $\pm$ 0.027 \\
+\multicolumn{7}{l}{\emph{Fingerprint / descriptor models}} \\
+\quad Logistic regression, ECFP4 & 0.669 $\pm$ 0.035 & 0.646 $\pm$ 0.033 & 0.766 $\pm$ 0.026 & 0.236 $\pm$ 0.067 & 0.618 $\pm$ 0.033 & 0.718 $\pm$ 0.034 \\
+\quad SVM (RBF), ECFP4 & 0.705 $\pm$ 0.041 & 0.671 $\pm$ 0.032 & 0.806 $\pm$ 0.033 & 0.242 $\pm$ 0.057 & 0.600 $\pm$ 0.023 & 0.772 $\pm$ 0.018 \\
+\quad Random forest, ECFP4 & 0.727 $\pm$ 0.027 & 0.709 $\pm$ 0.050 & \textbf{0.826 $\pm$ 0.019} & 0.297 $\pm$ 0.052 & 0.647 $\pm$ 0.027 & 0.750 $\pm$ 0.020 \\
+\quad XGBoost, ECFP4 & \textbf{0.728 $\pm$ 0.020} & 0.697 $\pm$ 0.041 & 0.824 $\pm$ 0.015 & \textbf{0.299 $\pm$ 0.043} & \textbf{0.652 $\pm$ 0.023} & 0.728 $\pm$ 0.017 \\
+\quad Random forest, RDKit descriptors & 0.723 $\pm$ 0.027 & \textbf{0.714 $\pm$ 0.049} & 0.822 $\pm$ 0.023 & 0.291 $\pm$ 0.047 & 0.633 $\pm$ 0.022 & 0.772 $\pm$ 0.016 \\
+\quad XGBoost, RDKit descriptors & 0.715 $\pm$ 0.032 & 0.700 $\pm$ 0.041 & 0.813 $\pm$ 0.027 & 0.298 $\pm$ 0.055 & 0.646 $\pm$ 0.028 & 0.754 $\pm$ 0.020 \\
+\multicolumn{7}{l}{\emph{Recurrent networks, default hyper-parameters (three best)}} \\
+\quad CL2D & 0.656 $\pm$ 0.032 & 0.636 $\pm$ 0.036 & 0.762 $\pm$ 0.028 & 0.234 $\pm$ 0.046 & 0.619 $\pm$ 0.025 & 0.673 $\pm$ 0.050 \\
+\quad CL3D & 0.654 $\pm$ 0.036 & 0.646 $\pm$ 0.040 & 0.757 $\pm$ 0.026 & 0.219 $\pm$ 0.059 & 0.613 $\pm$ 0.031 & 0.668 $\pm$ 0.029 \\
+\quad L3D & 0.651 $\pm$ 0.029 & 0.645 $\pm$ 0.046 & 0.748 $\pm$ 0.025 & 0.225 $\pm$ 0.049 & 0.615 $\pm$ 0.025 & 0.671 $\pm$ 0.050 \\
+\multicolumn{7}{l}{\emph{Recurrent networks, tuned (three best optimisers)}} \\
+\quad CL tuned, PSO & 0.674 $\pm$ 0.029 & 0.648 $\pm$ 0.046 & 0.772 $\pm$ 0.024 & 0.243 $\pm$ 0.057 & 0.624 $\pm$ 0.029 & 0.694 $\pm$ 0.039 \\
+\quad CL tuned, GA & 0.664 $\pm$ 0.033 & 0.636 $\pm$ 0.050 & 0.764 $\pm$ 0.027 & 0.230 $\pm$ 0.060 & 0.617 $\pm$ 0.030 & 0.659 $\pm$ 0.053 \\
+\quad CL tuned, MBO & 0.662 $\pm$ 0.030 & 0.628 $\pm$ 0.052 & 0.763 $\pm$ 0.027 & 0.229 $\pm$ 0.050 & 0.617 $\pm$ 0.026 & 0.669 $\pm$ 0.037 \\
+\multicolumn{7}{l}{\emph{Pretrained chemical language models and GNN}} \\
+\quad ChemBERTa-2 (77M-MLM), fine-tuned & 0.683 $\pm$ 0.025 & 0.670 $\pm$ 0.050 & 0.788 $\pm$ 0.026 & 0.258 $\pm$ 0.033 & 0.632 $\pm$ 0.017 & 0.702 $\pm$ 0.027 \\
+\quad MoLFormer-XL, fine-tuned & 0.693 $\pm$ 0.030 & 0.681 $\pm$ 0.039 & 0.788 $\pm$ 0.028 & 0.293 $\pm$ 0.059 & 0.650 $\pm$ 0.031 & 0.703 $\pm$ 0.033 \\
+\quad Chemprop D-MPNN & 0.671 $\pm$ 0.039 & 0.658 $\pm$ 0.059 & 0.775 $\pm$ 0.034 & 0.196 $\pm$ 0.056 & 0.583 $\pm$ 0.028 & 0.755 $\pm$ 0.019 \\
+\bottomrule
+\end{tabular}

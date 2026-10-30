@@ -1,0 +1,18 @@
+\begin{tabular}{lrr}
+\toprule
+ & SIDER & Tox21 \\
+\midrule
+Raw entries (MoleculeNet release) & 1427 & 7831 \\
+Valid after RDKit parsing & 1427 & 7818 \\
+Unique molecules after standardisation and merging & 1383 & 7611 \\
+Removed as macromolecules ($>$ 200 tokens) & 36 & 4 \\
+Final number of molecules & 1347 & 7607 \\
+Number of binary tasks & 27 & 12 \\
+\midrule
+Task used for the primary / learning-curve analyses & Blood and lymphatic & NR-AhR \\
+\quad Labelled molecules & 1347 & 6359 \\
+\quad Positive / negative & 855 / 492 & 759 / 5600 \\
+\quad Positive rate & 0.635 & 0.119 \\
+\quad F1 of the all-positive classifier & 0.777 & 0.213 \\
+\bottomrule
+\end{tabular}

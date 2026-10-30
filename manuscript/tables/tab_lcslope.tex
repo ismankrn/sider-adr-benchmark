@@ -1,0 +1,15 @@
+\begin{tabular}{lcccc}
+\toprule
+Model & \multicolumn{2}{c}{SIDER (250 to 1{,}077)} & \multicolumn{2}{c}{Tox21 (250 to 5{,}087)} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+ & Gain per doubling & Total gain & Gain per doubling & Total gain \\
+\midrule
+Random forest, ECFP4 & +0.028 & +0.062 & +0.019 & +0.084 \\
+XGBoost, ECFP4 & +0.042 & +0.091 & +0.022 & +0.095 \\
+CL1 default (LSTM, embedding) & +0.041 & +0.084 & +0.029 & +0.124 \\
+CL tuned (PSO configuration) & +0.046 & +0.101 & +0.022 & +0.091 \\
+ChemBERTa-2 & +0.049 & +0.108 & +0.028 & +0.126 \\
+MoLFormer-XL & +0.032 & +0.068 & +0.021 & +0.088 \\
+Chemprop D-MPNN & +0.018 & +0.035 & +0.046 & +0.194 \\
+\bottomrule
+\end{tabular}

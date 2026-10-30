@@ -1,0 +1,12 @@
+\begin{tabular}{lcccccccc}
+\toprule
+Optimiser & Best val.\ AUROC & Test AUROC (strat.) & Test AUROC (scaffold) & Test MCC (strat.) & \multicolumn{2}{c}{$\Delta$AUROC vs.\ random ($d$), $p$ / Holm $p$} \\
+\cmidrule(lr){6-7} & & & & & stratified & scaffold \\
+\midrule
+Random search & 0.694 $\pm$ 0.015 & 0.650 $\pm$ 0.032 & 0.630 $\pm$ 0.046 & 0.212 $\pm$ 0.065 & -- & -- \\
+TPE & 0.689 $\pm$ 0.031 & 0.633 $\pm$ 0.042 & 0.610 $\pm$ 0.054 & 0.184 $\pm$ 0.068 & -0.018 (-0.43), 0.013 / 0.078 & -0.020 (-0.38), 0.020 / 0.081 \\
+GA & 0.670 $\pm$ 0.016 & 0.664 $\pm$ 0.033 & 0.636 $\pm$ 0.050 & 0.230 $\pm$ 0.060 & +0.013 (0.35), 0.018 / 0.081 & +0.007 (0.18), 0.287 / 0.573 \\
+PSO & \textbf{0.697 $\pm$ 0.011} & \textbf{0.674 $\pm$ 0.029} & \textbf{0.648 $\pm$ 0.046} & \textbf{0.243 $\pm$ 0.057} & +0.024 (0.68), $<$0.001 / $<$0.001 & +0.018 (0.63), $<$0.001 / $<$0.001 \\
+MBO & 0.678 $\pm$ 0.022 & 0.662 $\pm$ 0.030 & 0.628 $\pm$ 0.052 & 0.229 $\pm$ 0.050 & +0.011 (0.31), 0.016 / 0.081 & -0.001 (-0.03), 0.920 / 0.920 \\
+\bottomrule
+\end{tabular}

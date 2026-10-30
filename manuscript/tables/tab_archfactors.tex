@@ -1,0 +1,13 @@
+\begin{tabular}{lccccc}
+\toprule
+Contrast (A vs.\ B) & AUROC A & AUROC B & $\Delta$ & Wilcoxon $p$ & Holm-adjusted $p$ \\
+\midrule
+Convolutional front-end (CL, CLD) vs.\ none (L, LD) & 0.647 & 0.647 & +0.000 & 0.489 & 1.000 \\
+Dense head (LD, CLD) vs.\ none (L, CL) & 0.649 & 0.645 & +0.004 & 0.188 & 1.000 \\
+Two recurrent layers vs.\ one & 0.648 & 0.641 & +0.007 & 0.169 & 1.000 \\
+Three recurrent layers vs.\ one & 0.651 & 0.641 & +0.010 & 0.073 & 0.511 \\
+GRU vs.\ LSTM (one layer) & 0.649 & 0.646 & +0.002 & 0.820 & 1.000 \\
+Bidirectional vs.\ unidirectional LSTM (one layer) & 0.644 & 0.646 & -0.002 & 0.599 & 1.000 \\
+CNN-GRU vs.\ CL1 & 0.637 & 0.635 & +0.002 & 0.599 & 1.000 \\
+\bottomrule
+\end{tabular}

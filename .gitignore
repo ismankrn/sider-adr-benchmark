@@ -1,0 +1,24 @@
+# private / working files not part of the public release
+*.docx
+Rekomendasi-Revisi-Paper.md
+writing-references/
+.DS_Store
+*.bak
+# environments, caches, logs
+code/.venv/
+code/logs/
+code/data/raw/
+__pycache__/
+*.pyc
+.hf_home/
+# LaTeX build products and the manuscript source (added on publication)
+manuscript/main.aux
+manuscript/main.bbl
+manuscript/main.blg
+manuscript/main.log
+manuscript/main.out
+manuscript/main.fls
+manuscript/main.fdb_latexmk
+manuscript/main.pdf
+manuscript/main.tex
+manuscript/references.bib

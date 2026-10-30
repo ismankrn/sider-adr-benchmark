@@ -1,0 +1,89 @@
+# ---------------------------------------------------------------- data
+data:
+  raw_url: https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/sider.csv.gz
+  raw_path: data/raw/sider.csv.gz
+  processed_path: data/processed/sider_clean.csv
+  task: "blood and lymphatic"        # substring match on the SIDER column name
+  keep_largest_fragment: true
+  neutralize: true
+  token_level: atom                  # atom (regex, recommended) | char (as in the thesis)
+  max_tokens: 200                    # drop macromolecules longer than this (SIDER has a few peptides up to ~900 tokens)
+
+# ---------------------------------------------------------------- evaluation protocol
+eval:
+  n_folds: 5
+  seeds: [0, 1, 2]
+  splits: [stratified, scaffold]
+  val_fraction: 0.15                 # inner validation split (early stopping / HPO fitness / threshold)
+  threshold_criterion: mcc           # chosen on validation only
+
+# ---------------------------------------------------------------- deep learning defaults
+dl:
+  device: cpu                        # cpu | mps | cuda | auto
+  base:
+    input_mode: embedding
+    emb_dim: 64
+    rnn_type: lstm
+    rnn_units: [64]
+    bidirectional: false
+    conv_filters: 64
+    kernel_size: 5
+    dense_units: 64
+    dropout: 0.2
+    lr: 0.001
+    weight_decay: 0.00001
+    batch_size: 32
+    max_epochs: 100
+    patience: 10
+    class_weight: true
+  # representation ablation (script 03): the thesis pipeline vs proper encodings
+  input_modes: [index, onehot, embedding]
+  # untuned architecture grid (script 03), same 12 configs as the paper
+  architectures: [L1, L2, L3, CL1, CL2, CL3, L1D, L2D, L3D, CL1D, CL2D, CL3D]
+  extra_variants:                    # additional sequence baselines
+    - {name: BiLSTM1, scheme: L, rnn_units: [64], bidirectional: true}
+    - {name: GRU1,    scheme: L, rnn_type: gru}
+    - {name: CNN-GRU, scheme: CL, rnn_type: gru}   # replication of Goh et al. SMILES2Vec
+
+# ---------------------------------------------------------------- classical baselines (script 02)
+baselines:
+  models: [logreg, rf, xgb, svm]
+  features: [ecfp4, descriptors]
+
+# ---------------------------------------------------------------- HPO benchmark (script 04)
+hpo:
+  methods: [random, tpe, mbo, ga, pso]
+  budget: 100                        # model trainings per method per seed (equal for all)
+  population_size: 20
+  schemes: [CL]                      # schemes to tune; add L, LD, CLD if compute allows
+  seeds: [0, 1, 2]
+  hpo_split_seed: 0                  # the dev split used for the search
+  mbo: {partition: 0.4166667, period: 1.2}
+  final_eval_folds: 5                # found config is re-evaluated with k-fold CV x seeds
+
+# ---------------------------------------------------------------- multi-task (script 05)
+multitask:
+  tasks: all                         # all | list of substrings
+  models: [majority, rf_ecfp4, dl_single, dl_multilabel]
+  dl_cfg_from: results/hpo_best_config.json   # falls back to dl.base if missing
+
+# ---------------------------------------------------------------- additional datasets (scripts 01/08/09 with --dataset)
+datasets:
+  tox21:
+    raw_url: https://deepchemdata.s3-us-west-1.amazonaws.com/datasets/tox21.csv.gz
+    raw_path: data/raw/tox21.csv.gz
+    processed_path: data/processed/tox21_clean.csv
+    task: "NR-AhR"                   # learning-curve task (6.5k labelled, ~12% positive)
+
+# ---------------------------------------------------------------- learning curve (script 08 / 09 --mode lc)
+lc:
+  sizes: [250, 500, 1000, 2000, 4000, 8000]   # training-set sizes; sizes above the fold are replaced by "all"
+  seeds: [0, 1, 2]
+  n_folds: 5
+  models: [xgb, rf, lstm]            # script 08; pretrained models come from script 09
+
+# ---------------------------------------------------------------- pretrained / graph models (script 09)
+pretrained:
+  chemberta: {hf_id: DeepChem/ChemBERTa-77M-MLM, max_len: 160, lr: 0.00005, batch_size: 32, max_epochs: 30, patience: 4}
+  molformer: {hf_id: ibm/MoLFormer-XL-both-10pct, max_len: 160, lr: 0.00003, batch_size: 32, max_epochs: 30, patience: 4, amp: false}
+  chemprop:  {epochs: 60, patience: 10, hidden: 300, depth: 3}
