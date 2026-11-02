@@ -22,9 +22,10 @@ COL_W = 4876        # twips, one column
 CM = 567            # twips per cm
 
 TITLE = "A controlled benchmark of SMILES-based recurrent networks, molecular fingerprints and pretrained chemical language models for adverse drug reaction prediction on SIDER"
-AUTHORS = [("Isman Kurniawan", "[a]", True), ("Angel Metanosa Afinda", "[b]", False), ("Aaz Muhammad Hafidz Azis", "[a]", False)]
+AUTHORS = [("Isman Kurniawan", "[a]", True), ("Angel Metanosa Afinda", "[b]", False), ("Aaz Muhammad Hafidz Azis", "[a]", False), ("Aditya Wibawa Sakti", "[c]", False)]
 ADDRESSES = [("[a]", "School of Computing, Telkom University", "Jl. Telekomunikasi No. 1, Bandung 40257, Indonesia"),
-             ("[b]", "School of Electrical Engineering, Telkom University", "Jl. Telekomunikasi No. 1, Bandung 40257, Indonesia")]
+             ("[b]", "School of Electrical Engineering, Telkom University", "Jl. Telekomunikasi No. 1, Bandung 40257, Indonesia"),
+             ("[c]", "Department of Chemistry and Biochemistry, School of Advanced Science and Engineering", "Waseda University, Tokyo, Japan")]
 EMAIL = "*e-mail: ismankrn@telkomuniversity.ac.id"
 RUNNING_AUTHOR = "I. Kurniawan et al."
 
@@ -110,8 +111,21 @@ p_intro_t = tfind("H1", "Introduction")
 frame_run = next(r for r in p_intro_t.findall(qn("w:r")) if r.find(".//" + qn("w:txbxContent")) is not None)
 txbx = frame_run.find(".//" + qn("w:txbxContent"))
 addr_ps = txbx.findall(qn("w:p"))
-# paragraph 0 -> [a], paragraph 1 -> [b] + e-mail, paragraph 2 (Supporting Information note) -> removed
-for p, (mark, inst, addr) in zip(addr_ps[:2], ADDRESSES):
+# paragraph 0 -> [a] + e-mail, paragraph 1 -> [b], clones of paragraph 1 -> [c], ...; the Supporting Information note is removed
+for p in addr_ps[2:]: txbx.remove(p)
+addr_ps = addr_ps[:2]
+while len(addr_ps) < len(ADDRESSES):
+    clone = copy.deepcopy(addr_ps[-1]); addr_ps[-1].addnext(clone); addr_ps.append(clone)
+EMU_PER_LINE = 128000
+extra = EMU_PER_LINE * 2 * (len(ADDRESSES) - 2)
+for ext in frame_run.iter("{http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing}extent"):
+    ext.set("cy", str(int(ext.get("cy")) + extra))
+for ext in frame_run.iter("{http://schemas.openxmlformats.org/drawingml/2006/main}ext"):
+    if ext.get("cy"): ext.set("cy", str(int(ext.get("cy")) + extra))
+for pv in frame_run.iter("{http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing}positionV"):
+    off = pv.find("{http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing}posOffset")
+    if off is not None: off.text = str(int(off.text) - extra)
+for p, (mark, inst, addr) in zip(addr_ps, ADDRESSES):
     clear_runs(p)
     r = OxmlElement("w:r"); r.append(OxmlElement("w:rPr"))
     def t_(txt):
@@ -120,7 +134,6 @@ for p, (mark, inst, addr) in zip(addr_ps[:2], ADDRESSES):
     if mark == "[a]":
         r.append(OxmlElement("w:br")); t_(EMAIL)
     p.append(r)
-for p in addr_ps[2:]: txbx.remove(p)
 frame_copy = copy.deepcopy(frame_run)
 # abstract table
 tbl_abs = next(el for el in tels if el.tag == qn("w:tbl") and "Abstract" in ptext(el))

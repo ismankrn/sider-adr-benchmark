@@ -15,6 +15,10 @@ authors:
     given-names: Aaz Muhammad Hafidz
     affiliation: "School of Computing, Telkom University, Bandung, Indonesia"
     email: aazmuhammad@telkomuniversity.ac.id
+  - family-names: Sakti
+    given-names: Aditya Wibawa
+    affiliation: "Department of Chemistry and Biochemistry, School of Advanced Science and Engineering, Waseda University, Tokyo, Japan"
+    email: aditya@aoni.waseda.jp
 repository-code: "https://github.com/ismankrn/sider-adr-benchmark"
 license: MIT
 doi: 10.5281/zenodo.23797950

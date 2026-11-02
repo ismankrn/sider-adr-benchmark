@@ -118,9 +118,10 @@ for p in d.paragraphs:
         for r in list(p.runs): r._element.getparent().remove(r._element)
         for om in p._element.xpath(".//m:oMath") + p._element.xpath(".//m:oMathPara"): om.getparent().remove(om)
         def sup(par, txt): rr = par.add_run(txt); rr.font.superscript = True
-        p.add_run("Isman Kurniawan"); sup(p, "[a],*"); p.add_run(", Angel Metanosa Afinda"); sup(p, "[b]"); p.add_run(", Aaz Muhammad Hafidz Azis"); sup(p, "[a]")
+        p.add_run("Isman Kurniawan"); sup(p, "[a],*"); p.add_run(", Angel Metanosa Afinda"); sup(p, "[b]"); p.add_run(", Aaz Muhammad Hafidz Azis"); sup(p, "[a]"); p.add_run(", Aditya Wibawa Sakti"); sup(p, "[c]")
         aff = ["[a] School of Computing, Telkom University, Jl. Telekomunikasi No. 1, Bandung 40257, Indonesia",
                "[b] School of Electrical Engineering, Telkom University, Jl. Telekomunikasi No. 1, Bandung 40257, Indonesia",
+               "[c] Department of Chemistry and Biochemistry, School of Advanced Science and Engineering, Waseda University, Tokyo, Japan",
                "* Corresponding author. E-mail: ismankrn@telkomuniversity.ac.id"]
         anchor = p
         for a in aff:
